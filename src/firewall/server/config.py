@@ -959,9 +959,7 @@ class FirewallDConfig(DbusServiceObject):
     def getIPSetNames(self, sender=None):  # pylint: disable=W0613
         """get ipset names"""
         log.debug1("config.getIPSetNames()")
-        ipsets = []
-        for obj in self.ipsets:
-            ipsets.append(obj.obj.name)
+        ipsets = [obj.obj.name for obj in self.ipsets]
         return sorted(ipsets)
 
     @dbus_service_method(
@@ -1013,9 +1011,7 @@ class FirewallDConfig(DbusServiceObject):
     def getIcmpTypeNames(self, sender=None):  # pylint: disable=W0613
         """get icmptype names"""
         log.debug1("config.getIcmpTypeNames()")
-        icmptypes = []
-        for obj in self.icmptypes:
-            icmptypes.append(obj.obj.name)
+        icmptypes = [obj.obj.name for obj in self.icmptypes]
         return sorted(icmptypes)
 
     @dbus_service_method(
@@ -1066,9 +1062,7 @@ class FirewallDConfig(DbusServiceObject):
     def getServiceNames(self, sender=None):  # pylint: disable=W0613
         """get service names"""
         log.debug1("config.getServiceNames()")
-        services = []
-        for obj in self.services:
-            services.append(obj.obj.name)
+        services = [obj.obj.name for obj in self.services]
         return sorted(services)
 
     @dbus_service_method(
@@ -1133,9 +1127,7 @@ class FirewallDConfig(DbusServiceObject):
     def getZoneNames(self, sender=None):  # pylint: disable=W0613
         """get zone names"""
         log.debug1("config.getZoneNames()")
-        zones = []
-        for obj in self.zones:
-            zones.append(obj.obj.name)
+        zones = [obj.obj.name for obj in self.zones]
         return sorted(zones)
 
     @dbus_service_method(
@@ -1159,10 +1151,7 @@ class FirewallDConfig(DbusServiceObject):
         """name of zone the given interface belongs to"""
         iface = dbus_to_python(iface, str)
         log.debug1("config.getZoneOfInterface('%s')", iface)
-        ret = []
-        for obj in self.zones:
-            if iface in obj.obj.interfaces:
-                ret.append(obj.obj.name)
+        ret = [obj.obj.name for obj in self.zones if iface in obj.obj.interfaces]
         if len(ret) > 1:
             # Even it shouldn't happen, it's actually possible that
             # the same interface is in several zone XML files
@@ -1182,10 +1171,7 @@ class FirewallDConfig(DbusServiceObject):
         """name of zone the given source belongs to"""
         source = dbus_to_python(source, str)
         log.debug1("config.getZoneOfSource('%s')", source)
-        ret = []
-        for obj in self.zones:
-            if source in obj.obj.sources:
-                ret.append(obj.obj.name)
+        ret = [obj.obj.sources for obj in self.zones if source in obj.obj.sources]
         if len(ret) > 1:
             # Even it shouldn't happen, it's actually possible that
             # the same source is in several zone XML files
@@ -1253,9 +1239,7 @@ class FirewallDConfig(DbusServiceObject):
     def getPolicyNames(self, sender=None):
         """get policy names"""
         log.debug1("config.getPolicyNames()")
-        policies = []
-        for obj in self.policy_objects:
-            policies.append(obj.obj.name)
+        policies = [obj.obj.name for obj in self.policy_objects]
         return sorted(policies)
 
     @dbus_service_method(
@@ -1306,9 +1290,7 @@ class FirewallDConfig(DbusServiceObject):
     def getHelperNames(self, sender=None):  # pylint: disable=W0613
         """get helper names"""
         log.debug1("config.getHelperNames()")
-        helpers = []
-        for obj in self.helpers:
-            helpers.append(obj.obj.name)
+        helpers = [obj.obj.name for obj in self.helpers]
         return sorted(helpers)
 
     @dbus_service_method(
