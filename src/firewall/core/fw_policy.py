@@ -81,12 +81,11 @@ class FirewallPolicy:
             p_obj = self.get_policy(policy)
             if p_obj.disable:
                 continue
+            active_zones = set(self._fw.zone.get_active_zones()) | {"HOST", "ANY"}
             if (
-                set(p_obj.ingress_zones)
-                & set(self._fw.zone.get_active_zones() + ["HOST", "ANY"])
+                set(p_obj.ingress_zones) & active_zones
             ) and (
-                set(p_obj.egress_zones)
-                & set(self._fw.zone.get_active_zones() + ["HOST", "ANY"])
+                set(p_obj.egress_zones) & active_zones
             ):
                 active_policies.append(policy)
 
