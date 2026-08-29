@@ -558,11 +558,7 @@ def check_mac(mac):
 
 def uniqify(_list):
     # removes duplicates from list, whilst preserving order
-    output = []
-    for x in _list:
-        if x not in output:
-            output.append(x)
-    return output
+    return list(dict.fromkeys(_list))
 
 
 def ppid_of_pid(pid):
