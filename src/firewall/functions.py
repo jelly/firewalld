@@ -412,10 +412,7 @@ def checkUINT16(val):
         except ValueError:
             return False
 
-    if val >= 0 and val <= 65535:
-        return True
-
-    return False
+    return val >= 0 and val <= 65535
 
 
 def checkUINT32(val):
@@ -425,10 +422,7 @@ def checkUINT32(val):
         except ValueError:
             return False
 
-    if val >= 0 and val <= 4294967295:
-        return True
-
-    return False
+    return val >= 0 and val <= 4294967295
 
 
 def firewalld_is_active():
@@ -455,10 +449,7 @@ def firewalld_is_active():
     except Exception:
         return False
 
-    if "firewalld" in cmdline:
-        return True
-
-    return False
+    return "firewalld" in cmdline
 
 
 def tempFile():
