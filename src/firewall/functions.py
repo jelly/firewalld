@@ -552,77 +552,12 @@ def uniqify(_list):
     return list(dict.fromkeys(_list))
 
 
-def ppid_of_pid(pid):
-    """Get parent for pid"""
-    try:
-        f = os.popen("ps -o ppid -h -p %d 2>/dev/null" % pid)
-        pid = int(f.readlines()[0].strip())
-        f.close()
-    except Exception:
-        return None
-    return pid
-
-
 def max_policy_name_len():
     return 128
 
 
 def max_zone_name_len():
     return 96
-
-
-def checkUser(user):
-    if len(user) < 1 or len(user) > os.sysconf("SC_LOGIN_NAME_MAX"):
-        return False
-    for c in user:
-        if (
-            c not in string.ascii_letters
-            and c not in string.digits
-            and c not in [".", "-", "_", "$"]
-        ):
-            return False
-    return True
-
-
-def checkUid(uid):
-    if isinstance(uid, str):
-        try:
-            uid = int(uid)
-        except ValueError:
-            return False
-    if uid >= 0 and uid <= 2**31 - 1:
-        return True
-    return False
-
-
-def checkCommand(command):
-    if len(command) < 1 or len(command) > 1024:
-        return False
-    for ch in ["|", "\n", "\0"]:
-        if ch in command:
-            return False
-    if command[0] != "/":
-        return False
-    return True
-
-
-def checkContext(context):
-    splits = context.split(":")
-    if len(splits) not in [4, 5]:
-        return False
-    # user ends with _u if not root
-    if splits[0] != "root" and splits[0][-2:] != "_u":
-        return False
-    # role ends with _r
-    if splits[1][-2:] != "_r":
-        return False
-    # type ends with _t
-    if splits[2][-2:] != "_t":
-        return False
-    # level might also contain :
-    if len(splits[3]) < 1:
-        return False
-    return True
 
 
 def joinArgs(args):
