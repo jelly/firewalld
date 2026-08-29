@@ -237,7 +237,7 @@ class FirewallConfig:
 
     def get_ipsets(self):
         return sorted(
-            set(list(self._ipsets.keys()) + list(self._builtin_ipsets.keys()))
+            self._ipsets.keys() | self._builtin_ipsets.keys()
         )
 
     def add_ipset(self, obj):
@@ -419,7 +419,7 @@ class FirewallConfig:
 
     def get_icmptypes(self):
         return sorted(
-            set(list(self._icmptypes.keys()) + list(self._builtin_icmptypes.keys()))
+            self._icmptypes.keys() | self._builtin_icmptypes.keys()
         )
 
     def add_icmptype(self, obj):
@@ -601,7 +601,7 @@ class FirewallConfig:
 
     def get_services(self):
         return sorted(
-            set(list(self._services.keys()) + list(self._builtin_services.keys()))
+            self._services.keys() | self._builtin_services.keys()
         )
 
     def add_service(self, obj):
@@ -798,7 +798,7 @@ class FirewallConfig:
     # zones
 
     def get_zones(self):
-        return sorted(set(list(self._zones.keys()) + list(self._builtin_zones.keys())))
+        return sorted(self._zones.keys() | self._builtin_zones.keys())
 
     def add_zone(self, obj):
         if obj.builtin:
@@ -1009,10 +1009,7 @@ class FirewallConfig:
 
     def get_policy_objects(self):
         return sorted(
-            set(
-                list(self._policy_objects.keys())
-                + list(self._builtin_policy_objects.keys())
-            )
+            self._policy_objects.keys() | self._builtin_policy_objects.keys()
         )
 
     def add_policy_object(self, obj):
@@ -1209,7 +1206,7 @@ class FirewallConfig:
 
     def get_helpers(self):
         return sorted(
-            set(list(self._helpers.keys()) + list(self._builtin_helpers.keys()))
+            self._helpers.keys() | self._builtin_helpers.keys()
         )
 
     def add_helper(self, obj):
