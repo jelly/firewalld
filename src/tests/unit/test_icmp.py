@@ -68,8 +68,6 @@ def test_icmptypes():
     dirname = helpers.srcdir("config/icmptypes")
     files = [f for f in os.listdir(dirname) if f.endswith(".xml")]
     assert files
-    xmlobjs = []
-    for file in files:
-        xmlobjs.append(_icmptypes_load_file(dirname, file))
+    xmlobjs = [_icmptypes_load_file(dirname, file) for file in files]
 
     _test_icmptypes_defined_type_and_code(xmlobjs)
