@@ -35,13 +35,7 @@ def dbus_to_python(obj, expected_type=None):
     elif isinstance(obj, dbus.ObjectPath):
         python_obj = str(obj)
     elif (
-        isinstance(obj, dbus.Byte)
-        or isinstance(obj, dbus.Int16)
-        or isinstance(obj, dbus.Int32)
-        or isinstance(obj, dbus.Int64)
-        or isinstance(obj, dbus.UInt16)
-        or isinstance(obj, dbus.UInt32)
-        or isinstance(obj, dbus.UInt64)
+        isinstance(obj, (dbus.Byte, dbus.Int16, dbus.Int32, dbus.Int64, dbus.UInt16, dbus.UInt32, dbus.UInt64))
     ):
         python_obj = int(obj)
     elif isinstance(obj, dbus.Double):
@@ -53,14 +47,7 @@ def dbus_to_python(obj, expected_type=None):
     elif isinstance(obj, dbus.Dictionary):
         python_obj = {dbus_to_python(k): dbus_to_python(v) for k, v in obj.items()}
     elif (
-        isinstance(obj, bool)
-        or isinstance(obj, str)
-        or isinstance(obj, bytes)
-        or isinstance(obj, int)
-        or isinstance(obj, float)
-        or isinstance(obj, list)
-        or isinstance(obj, tuple)
-        or isinstance(obj, dict)
+        isinstance(obj, (bool, str, bytes, int, float, list, tuple, dict))
     ):
         python_obj = obj
     else:

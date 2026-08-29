@@ -445,8 +445,7 @@ def common_check_config(obj, config, item, all_config, all_io_objects):
                 obj_rich.element
                 and "icmptypes" in all_io_objects
                 and (
-                    isinstance(obj_rich.element, rich.Rich_IcmpBlock)
-                    or isinstance(obj_rich.element, rich.Rich_IcmpType)
+                    isinstance(obj_rich.element, (rich.Rich_IcmpBlock, rich.Rich_IcmpType))
                 )
             ):
                 existing_icmptypes = all_io_objects["icmptypes"]

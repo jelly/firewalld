@@ -1427,8 +1427,7 @@ class FirewallPolicy:
         if rule.family:
             ipvs = [rule.family]
         elif rule.element and (
-            isinstance(rule.element, Rich_IcmpBlock)
-            or isinstance(rule.element, Rich_IcmpType)
+            isinstance(rule.element, (Rich_IcmpBlock, Rich_IcmpType))
         ):
             ict = self._fw.config.get_icmptype(rule.element.name)
             if ict.destination:
@@ -1599,9 +1598,7 @@ class FirewallPolicy:
                 transaction.add_rules(backend, rules)
 
             # ICMP BLOCK and ICMP TYPE
-            elif isinstance(rule.element, Rich_IcmpBlock) or isinstance(
-                rule.element, Rich_IcmpType
-            ):
+            elif isinstance(rule.element, (Rich_IcmpBlock, Rich_IcmpType)):
                 ict = self._fw.config.get_icmptype(rule.element.name)
 
                 if (

@@ -54,7 +54,7 @@ class IO_Object:
         conf = {}
         for key in self.IMPORT_EXPORT_STRUCTURE:
             v = getattr(self, key)
-            if v or isinstance(v, bool) or isinstance(v, int):
+            if v or isinstance(v, (bool, int)):
                 conf[key] = copy.deepcopy(v)
         return conf
 

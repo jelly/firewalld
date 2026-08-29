@@ -58,7 +58,7 @@ def getPortRange(ports):
     """
 
     # (port, port)  or [port, port] case
-    if isinstance(ports, tuple) or isinstance(ports, list):
+    if isinstance(ports, (tuple, list)):
         return ports
 
     # "<port-id>" case

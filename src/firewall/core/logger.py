@@ -496,7 +496,7 @@ class Logger:
     def _getLevels(self, level, is_debug=0):
         """Generate log level array."""
         if level != self.ALL:
-            if isinstance(level, list) or isinstance(level, tuple):
+            if isinstance(level, (list, tuple)):
                 levels = level
             else:
                 levels = [level]
@@ -516,7 +516,7 @@ class Logger:
 
     def _getTargets(self, target):
         """Generate target array."""
-        if isinstance(target, list) or isinstance(target, tuple):
+        if isinstance(target, (list, tuple)):
             targets = target
         else:
             targets = [target]

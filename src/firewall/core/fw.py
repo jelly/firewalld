@@ -1414,7 +1414,7 @@ class Firewall:
 
         for key, value in runtime.items():
             # omit empty entries
-            if value or isinstance(value, bool) or isinstance(value, int):
+            if value or isinstance(value, (bool, int)):
                 combined[key] = value
             # make sure to remove values that were in permanent, but no
             # longer in runtime.
@@ -1442,9 +1442,7 @@ class Firewall:
                     remove_settings[key] = list((old ^ set(new_settings[key])) & old)
                 # check for bool or int because dbus.Boolean is a subclass of
                 # int (because bool can't be subclassed).
-                elif isinstance(new_settings[key], bool) or isinstance(
-                    new_settings[key], int
-                ):
+                elif isinstance(new_settings[key], (bool, int)):
                     if not old_settings[key] and new_settings[key]:
                         add_settings[key] = True
                     elif old_settings[key] and not new_settings[key]:
