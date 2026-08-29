@@ -132,23 +132,16 @@ class Direct(IO_Object):
         # check arg lists
 
     def export_config(self):
-        ret = []
-        x = []
-        for key in self.chains:
-            for chain in self.chains[key]:
-                x.append(tuple(list(key) + list([chain])))
-        ret.append(x)
-        x = []
-        for key in self.rules:
-            for rule in self.rules[key]:
-                x.append(tuple((key[0], key[1], key[2], rule[0], list(rule[1]))))
-        ret.append(x)
-        x = []
-        for key in self.passthroughs:
-            for rule in self.passthroughs[key]:
-                x.append(tuple((key, list(rule))))
-        ret.append(x)
-        return tuple(ret)
+        chains = [(*key, chain)
+                  for key, chains in self.chains.items()
+                  for chain in chains]
+        rules = [(*key, rule[0], list(rule[1]))
+                 for key, rules in self.rules.items()
+                 for rule in rules]
+        passthroughs = [(key, list(rule))
+                        for key, rules in self.passthroughs.items()
+                        for rule in rules]
+        return (chains, rules, passthroughs)
 
     def import_config(self, conf, all_io_objects):
         self.cleanup()
