@@ -1471,7 +1471,7 @@ class nftables:
         chain,
     ):
         add_del = {True: "add", False: "delete"}[enable]
-        isSNAT = True if (table == "nat" and chain == "POSTROUTING") else False
+        isSNAT = table == "nat" and chain == "POSTROUTING"
         _policy = self._fw.policy.policy_base_chain_name(
             target_policy, table, POLICY_CHAIN_PREFIX, isSNAT
         )
@@ -1490,7 +1490,7 @@ class nftables:
 
     def build_policy_chain_rules(self, enable, policy, table, chain):
         add_del = {True: "add", False: "delete"}[enable]
-        isSNAT = True if (table == "nat" and chain == "POSTROUTING") else False
+        isSNAT = table == "nat" and chain == "POSTROUTING"
         _policy = self._fw.policy.policy_base_chain_name(
             policy, table, POLICY_CHAIN_PREFIX, isSNAT=isSNAT
         )
@@ -1874,7 +1874,7 @@ class nftables:
         if address.startswith("ipset:"):
             return self._set_match_fragment(
                 address[len("ipset:") :],
-                True if "daddr" == addr_field else False,
+                "daddr" == addr_field,
                 invert,
             )
         else:

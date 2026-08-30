@@ -1124,7 +1124,7 @@ class ip4tables:
         chain,
     ):
         add_del = {True: "-A", False: "-D"}[enable]
-        isSNAT = True if (table == "nat" and chain == "POSTROUTING") else False
+        isSNAT = table == "nat" and chain == "POSTROUTING"
         chain_name = self._zone_dispatch_chain_name(
             ingress_zone, egress_zone, table, chain
         )
@@ -1164,7 +1164,7 @@ class ip4tables:
     def build_policy_chain_rules(self, enable, policy, table, chain):
         add_del_chain = {True: "-N", False: "-X"}[enable]
         add_del_rule = {True: "-A", False: "-D"}[enable]
-        isSNAT = True if (table == "nat" and chain == "POSTROUTING") else False
+        isSNAT = table == "nat" and chain == "POSTROUTING"
         _policy = self._fw.policy.policy_base_chain_name(
             policy, table, POLICY_CHAIN_PREFIX, isSNAT=isSNAT
         )
