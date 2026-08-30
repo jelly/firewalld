@@ -334,10 +334,8 @@ class Logger:
     def setInfoLogLevel(self, level, domain="*"):
         """Set log level [NOTHING .. INFO_MAX]"""
         self._checkDomain(domain)
-        if level < self.NOTHING:
-            level = self.NOTHING
-        if level > self.INFO_MAX:
-            level = self.INFO_MAX
+        level = max(level, self.NOTHING)
+        level = min(level, self.INFO_MAX)
         self._level[domain] = level
 
     def getDebugLogLevel(self, domain="*"):
@@ -350,10 +348,8 @@ class Logger:
     def setDebugLogLevel(self, level, domain="*"):
         """Set debug log level [NO_DEBUG .. DEBUG_MAX]"""
         self._checkDomain(domain)
-        if level < 0:
-            level = 0
-        if level > self.DEBUG_MAX:
-            level = self.DEBUG_MAX
+        level = max(level, 0)
+        level = min(level, self.DEBUG_MAX)
         self._debug_level[domain] = level - self.NO_DEBUG
 
     def getFormat(self):
