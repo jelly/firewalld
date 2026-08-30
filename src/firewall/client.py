@@ -148,7 +148,7 @@ class FirewallClientZoneSettings:
         if settings:
             if isinstance(settings, list):
                 for i, v in enumerate(settings):
-                    self.settings[i] = settings[i]
+                    self.settings[i] = v
             if isinstance(settings, dict):
                 self.setSettingsDict(settings)
 
@@ -1484,7 +1484,7 @@ class FirewallClientServiceSettings:
         if settings:
             if type(settings) is list:
                 for i, v in enumerate(settings):
-                    self.settings[i] = settings[i]
+                    self.settings[i] = v
             elif type(settings) is dict:
                 self.setSettingsDict(settings)
 
