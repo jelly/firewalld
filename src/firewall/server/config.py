@@ -1380,7 +1380,7 @@ class FirewallDConfig(DbusServiceObject):
         chain = dbus_to_python(chain)
         log.debug1("config.direct.addChain('%s', '%s', '%s')" % (ipv, table, chain))
         self.accessCheck(sender)
-        idx = tuple((ipv, table, chain))
+        idx = (ipv, table, chain)
         settings = list(self.getSettings())
         if idx in settings[0]:
             raise FirewallError(
@@ -1402,7 +1402,7 @@ class FirewallDConfig(DbusServiceObject):
         chain = dbus_to_python(chain)
         log.debug1("config.direct.removeChain('%s', '%s', '%s')" % (ipv, table, chain))
         self.accessCheck(sender)
-        idx = tuple((ipv, table, chain))
+        idx = (ipv, table, chain)
         settings = list(self.getSettings())
         if idx not in settings[0]:
             raise FirewallError(
@@ -1423,7 +1423,7 @@ class FirewallDConfig(DbusServiceObject):
         table = dbus_to_python(table)
         chain = dbus_to_python(chain)
         log.debug1("config.direct.queryChain('%s', '%s', '%s')" % (ipv, table, chain))
-        idx = tuple((ipv, table, chain))
+        idx = (ipv, table, chain)
         return idx in self.getSettings()[0]
 
     @dbus_service_method(
