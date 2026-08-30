@@ -701,7 +701,7 @@ class ip4tables:
         self.our_chains = {}
         self.unique_chain_name_map = {}
         rules = []
-        for table in BUILT_IN_CHAINS.keys():
+        for table in BUILT_IN_CHAINS:
             if not self.get_available_tables(table):
                 continue
             # Flush firewall rules: -F
@@ -714,7 +714,7 @@ class ip4tables:
     def build_set_policy_rules(self, policy, policy_details):
         rules = []
         _policy = "DROP" if policy == "PANIC" else policy
-        for table in BUILT_IN_CHAINS.keys():
+        for table in BUILT_IN_CHAINS:
             if not self.get_available_tables(table):
                 continue
             if table == "nat":

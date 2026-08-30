@@ -314,7 +314,7 @@ class IPSet(IO_Object):
                     errors.INVALID_TYPE, "'%s' is not valid ipset type" % config
                 )
         if item == "options":
-            for key in config.keys():
+            for key in config:
                 if key not in IPSET_CREATE_OPTIONS:
                     raise FirewallError(
                         errors.INVALID_IPSET, "ipset invalid option '%s'" % key

@@ -316,7 +316,7 @@ class FirewallConfig:
 
             if path == config.ETC_FIREWALLD_IPSETS:
                 # removed custom ipset
-                for x in self._ipsets.keys():
+                for x in self._ipsets:
                     obj = self._ipsets[x]
                     if obj.filename == filename:
                         del self._ipsets[x]
@@ -325,7 +325,7 @@ class FirewallConfig:
                         return ("remove", obj)
             else:
                 # removed builtin ipset
-                for x in self._builtin_ipsets.keys():
+                for x in self._builtin_ipsets:
                     obj = self._builtin_ipsets[x]
                     if obj.filename == filename:
                         del self._builtin_ipsets[x]
@@ -498,7 +498,7 @@ class FirewallConfig:
 
             if path == config.ETC_FIREWALLD_ICMPTYPES:
                 # removed custom icmptype
-                for x in self._icmptypes.keys():
+                for x in self._icmptypes:
                     obj = self._icmptypes[x]
                     if obj.filename == filename:
                         del self._icmptypes[x]
@@ -507,7 +507,7 @@ class FirewallConfig:
                         return ("remove", obj)
             else:
                 # removed builtin icmptype
-                for x in self._builtin_icmptypes.keys():
+                for x in self._builtin_icmptypes:
                     obj = self._builtin_icmptypes[x]
                     if obj.filename == filename:
                         del self._builtin_icmptypes[x]
@@ -696,7 +696,7 @@ class FirewallConfig:
 
             if path == config.ETC_FIREWALLD_SERVICES:
                 # removed custom service
-                for x in self._services.keys():
+                for x in self._services:
                     obj = self._services[x]
                     if obj.filename == filename:
                         del self._services[x]
@@ -705,7 +705,7 @@ class FirewallConfig:
                         return ("remove", obj)
             else:
                 # removed builtin service
-                for x in self._builtin_services.keys():
+                for x in self._builtin_services:
                     obj = self._builtin_services[x]
                     if obj.filename == filename:
                         del self._builtin_services[x]
@@ -896,7 +896,7 @@ class FirewallConfig:
 
             if path.startswith(config.ETC_FIREWALLD_ZONES):
                 # removed custom zone
-                for x in self._zones.keys():
+                for x in self._zones:
                     obj = self._zones[x]
                     if obj.filename == filename:
                         del self._zones[x]
@@ -905,7 +905,7 @@ class FirewallConfig:
                         return ("remove", obj)
             else:
                 # removed builtin zone
-                for x in self._builtin_zones.keys():
+                for x in self._builtin_zones:
                     obj = self._builtin_zones[x]
                     if obj.filename == filename:
                         del self._builtin_zones[x]
@@ -1090,7 +1090,7 @@ class FirewallConfig:
 
             if path.startswith(config.ETC_FIREWALLD_POLICIES):
                 # removed custom policy_object
-                for x in self._policy_objects.keys():
+                for x in self._policy_objects:
                     obj = self._policy_objects[x]
                     if obj.filename == filename:
                         del self._policy_objects[x]
@@ -1099,7 +1099,7 @@ class FirewallConfig:
                         return ("remove", obj)
             else:
                 # removed builtin policy_object
-                for x in self._builtin_policy_objects.keys():
+                for x in self._builtin_policy_objects:
                     obj = self._builtin_policy_objects[x]
                     if obj.filename == filename:
                         del self._builtin_policy_objects[x]
@@ -1285,7 +1285,7 @@ class FirewallConfig:
 
             if path == config.ETC_FIREWALLD_HELPERS:
                 # removed custom helper
-                for x in self._helpers.keys():
+                for x in self._helpers:
                     obj = self._helpers[x]
                     if obj.filename == filename:
                         del self._helpers[x]
@@ -1294,7 +1294,7 @@ class FirewallConfig:
                         return ("remove", obj)
             else:
                 # removed builtin helper
-                for x in self._builtin_helpers.keys():
+                for x in self._builtin_helpers:
                     obj = self._builtin_helpers[x]
                     if obj.filename == filename:
                         del self._builtin_helpers[x]

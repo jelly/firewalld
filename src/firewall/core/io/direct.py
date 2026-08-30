@@ -275,7 +275,7 @@ class Direct(IO_Object):
         self._check_ipv_table(ipv, table)
         key = (ipv, table, chain)
         if key in self.rules:
-            for value in self.rules[key].keys():
+            for value in self.rules[key]:
                 del self.rules[key][value]
             if len(self.rules[key]) == 0:
                 del self.rules[key]

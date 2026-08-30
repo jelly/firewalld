@@ -89,7 +89,7 @@ def check_on_disk_config(fw):
             "dirs": [config.FIREWALLD_POLICIES, config.ETC_FIREWALLD_POLICIES],
         },
     }
-    for reader in readers.keys():
+    for reader in readers:
         for _dir in readers[reader]["dirs"]:
             for directory, file, check_name_len in get_config_files_in_dir(
                 _dir, reader

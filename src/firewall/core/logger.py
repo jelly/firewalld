@@ -479,7 +479,7 @@ class Logger:
     def _checkKWargs(self, kwargs):
         if not kwargs:
             return
-        for key in kwargs.keys():
+        for key in kwargs:
             if key not in ["nl", "fmt", "nofmt"]:
                 raise ValueError(
                     "Key '%s' is not allowed as argument for logging." % key

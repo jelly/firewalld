@@ -663,7 +663,7 @@ class nftables:
 
     def build_default_rules(self, log_denied="off"):
         default_rules = []
-        for chain in IPTABLES_TO_NFT_HOOK["mangle"].keys():
+        for chain in IPTABLES_TO_NFT_HOOK["mangle"]:
             default_rules.append(
                 {
                     "add": {
@@ -704,7 +704,7 @@ class nftables:
                 }
             )
 
-        for chain in IPTABLES_TO_NFT_HOOK["nat"].keys():
+        for chain in IPTABLES_TO_NFT_HOOK["nat"]:
             default_rules.append(
                 {
                     "add": {
@@ -744,7 +744,7 @@ class nftables:
                 }
             )
 
-        for chain in IPTABLES_TO_NFT_HOOK["filter"].keys():
+        for chain in IPTABLES_TO_NFT_HOOK["filter"]:
             default_rules.append(
                 {
                     "add": {

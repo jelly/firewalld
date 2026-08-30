@@ -24,7 +24,7 @@ DEFAULT_RULES = {}
 LOG_RULES = {}
 OUR_CHAINS = {}  # chains created by firewalld
 
-for table in BUILT_IN_CHAINS.keys():
+for table in BUILT_IN_CHAINS:
     DEFAULT_RULES[table] = []
     OUR_CHAINS[table] = set()
     for chain in BUILT_IN_CHAINS[table]:
@@ -213,7 +213,7 @@ class ebtables:
 
     def build_flush_rules(self):
         rules = []
-        for table in BUILT_IN_CHAINS.keys():
+        for table in BUILT_IN_CHAINS:
             if table not in self.get_available_tables():
                 continue
             # Flush firewall rules: -F
@@ -226,7 +226,7 @@ class ebtables:
     def build_set_policy_rules(self, policy, policy_details):
         rules = []
         _policy = "DROP" if policy == "PANIC" else policy
-        for table in BUILT_IN_CHAINS.keys():
+        for table in BUILT_IN_CHAINS:
             if table not in self.get_available_tables():
                 continue
             for chain in BUILT_IN_CHAINS[table]:
