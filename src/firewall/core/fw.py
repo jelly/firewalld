@@ -1437,7 +1437,7 @@ class Firewall:
         for key in set(old_settings.keys()) | set(new_settings.keys()):
             if key in new_settings:
                 if isinstance(new_settings[key], list):
-                    old = set(old_settings[key] if key in old_settings else [])
+                    old = set(old_settings.get(key, []))
                     add_settings[key] = list(set(new_settings[key]) - old)
                     remove_settings[key] = list((old ^ set(new_settings[key])) & old)
                 # check for bool or int because dbus.Boolean is a subclass of

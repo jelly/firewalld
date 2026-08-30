@@ -668,7 +668,7 @@ class FirewallDConfigService(DbusServiceObject):
         log.debug1("%s.getIncludes()", self._log_prefix)
         self.parent.accessCheck(sender)
         settings = self.config.get_service_config_dict(self.obj)
-        return settings["includes"] if "includes" in settings else []
+        return settings.get("includes", [])
 
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE, in_signature="as")
     @dbus_handle_exceptions
