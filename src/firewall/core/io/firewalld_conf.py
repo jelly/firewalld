@@ -6,7 +6,6 @@
 # Thomas Woerner <twoerner@redhat.com>
 
 import os.path
-import io
 import tempfile
 import shutil
 
@@ -327,7 +326,7 @@ class firewalld_conf:
         modified = False
         empty = False
         try:
-            f = io.open(self.filename, mode="rt", encoding="UTF-8")
+            f = open(self.filename, mode="rt", encoding="UTF-8")
         except Exception as msg:
             if os.path.exists(self.filename):
                 log.error("Failed to open '%s': %s" % (self.filename, msg))

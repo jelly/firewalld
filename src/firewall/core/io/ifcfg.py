@@ -8,7 +8,6 @@
 """ifcfg file parser"""
 
 import os.path
-import io
 import tempfile
 import shutil
 
@@ -99,7 +98,7 @@ class ifcfg:
         modified = False
         empty = False
         try:
-            f = io.open(self.filename, mode="rt", encoding="UTF-8")
+            f = open(self.filename, mode="rt", encoding="UTF-8")
         except Exception as msg:
             if os.path.exists(self.filename):
                 log.error("Failed to open '%s': %s" % (self.filename, msg))

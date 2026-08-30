@@ -7,7 +7,6 @@
 
 import xml.sax as sax
 import os
-import io
 import shutil
 
 from firewall import config
@@ -135,7 +134,7 @@ def icmptype_writer(icmptype, path=None):
             os.mkdir(config.ETC_FIREWALLD, 0o750)
         os.mkdir(dirpath, 0o750)
 
-    f = io.open(name, mode="wt", encoding="UTF-8")
+    f = open(name, mode="wt", encoding="UTF-8")
     handler = IO_Object_XMLGenerator(f)
     handler.startDocument()
 
