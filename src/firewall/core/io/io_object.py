@@ -216,7 +216,7 @@ class IO_Object:
 
 class UnexpectedElementError(Exception):
     def __init__(self, name):
-        super(UnexpectedElementError, self).__init__()
+        super().__init__()
         self.name = name
 
     def __str__(self):
@@ -225,7 +225,7 @@ class UnexpectedElementError(Exception):
 
 class MissingAttributeError(Exception):
     def __init__(self, name, attribute):
-        super(MissingAttributeError, self).__init__()
+        super().__init__()
         self.name = name
         self.attribute = attribute
 
@@ -235,7 +235,7 @@ class MissingAttributeError(Exception):
 
 class UnexpectedAttributeError(Exception):
     def __init__(self, name, attribute):
-        super(UnexpectedAttributeError, self).__init__()
+        super().__init__()
         self.name = name
         self.attribute = attribute
 

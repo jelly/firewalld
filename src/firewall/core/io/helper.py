@@ -45,7 +45,7 @@ class Helper(IO_Object):
     }
 
     def __init__(self):
-        super(Helper, self).__init__()
+        super().__init__()
         self.version = ""
         self.short = ""
         self.description = ""

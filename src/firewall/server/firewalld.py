@@ -88,7 +88,7 @@ class FirewallD(DbusServiceObject):
             if bus and name:
                 break
 
-        super(FirewallD, self).__init__(name, config.dbus.DBUS_PATH)
+        super().__init__(name, config.dbus.DBUS_PATH)
 
         self.busname = name
         self.path = config.dbus.DBUS_PATH
@@ -313,7 +313,7 @@ class FirewallD(DbusServiceObject):
     def Introspect(self, sender=None):  # pylint: disable=W0613
         log.debug2("Introspect()")
 
-        data = super(FirewallD, self).Introspect(self.path, self.busname.get_bus())
+        data = super().Introspect(self.path, self.busname.get_bus())
 
         data = dbus_introspection_add_properties(self, data, config.dbus.DBUS_INTERFACE)
 

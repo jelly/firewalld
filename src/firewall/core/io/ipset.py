@@ -64,7 +64,7 @@ class IPSet(IO_Object):
     }
 
     def __init__(self):
-        super(IPSet, self).__init__()
+        super().__init__()
         self.version = ""
         self.short = ""
         self.description = ""
@@ -349,7 +349,7 @@ class IPSet(IO_Object):
                 raise FirewallError(errors.IPSET_WITH_TIMEOUT)
         for entry in config[5]:
             IPSet.check_entry(entry, config[4], config[3])
-        super(IPSet, self).import_config(config, all_io_objects)
+        super().import_config(config, all_io_objects)
 
 
 # PARSER

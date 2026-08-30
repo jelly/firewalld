@@ -121,7 +121,7 @@ class Direct(IO_Object):
     PARSER_OPTIONAL_ELEMENT_ATTRS = {}
 
     def __init__(self, filename):
-        super(Direct, self).__init__()
+        super().__init__()
         self.filename = filename
         self.chains = LastUpdatedOrderedDict()
         self.rules = LastUpdatedOrderedDict()

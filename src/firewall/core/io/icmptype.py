@@ -41,7 +41,7 @@ class IcmpType(IO_Object):
     }
 
     def __init__(self):
-        super(IcmpType, self).__init__()
+        super().__init__()
         self.version = ""
         self.short = ""
         self.description = ""

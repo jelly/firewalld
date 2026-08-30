@@ -93,7 +93,7 @@ class FirewallDConfig(DbusServiceObject):
 
     @handle_exceptions
     def __init__(self, conf, *args, **kwargs):
-        super(FirewallDConfig, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.config = conf
         self.busname = args[0]
         self.path = args[1]
@@ -753,7 +753,7 @@ class FirewallDConfig(DbusServiceObject):
     def Introspect(self, sender=None):  # pylint: disable=W0613
         log.debug2("config.Introspect()")
 
-        data = super(FirewallDConfig, self).Introspect(
+        data = super().Introspect(
             self.path, self.busname.get_bus()
         )
         data = dbus_introspection_add_properties(

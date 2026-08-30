@@ -27,7 +27,7 @@ class FirewallDConfigPolicy(DbusServiceObject):
 
     @handle_exceptions
     def __init__(self, parent, conf, policy, item_id, *args, **kwargs):
-        super(FirewallDConfigPolicy, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.parent = parent
         self.config = conf
         self.obj = policy
@@ -152,7 +152,7 @@ class FirewallDConfigPolicy(DbusServiceObject):
     def Introspect(self, sender=None):
         log.debug2("%s.Introspect()", self._log_prefix)
 
-        data = super(FirewallDConfigPolicy, self).Introspect(
+        data = super().Introspect(
             self.path, self.busname.get_bus()
         )
 

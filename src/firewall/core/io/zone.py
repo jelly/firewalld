@@ -122,7 +122,7 @@ class Zone(IO_Object):
         raise FirewallError(errors.UNKNOWN_ERROR, "index_of()")
 
     def __init__(self):
-        super(Zone, self).__init__()
+        super().__init__()
         self.version = ""
         self.short = ""
         self.description = ""
@@ -172,16 +172,16 @@ class Zone(IO_Object):
         if name == "rules_str":
             return [str(r) for r in sorted(self.rules)]
         else:
-            return getattr(super(Zone, self), name)
+            return getattr(super(), name)
 
     def __setattr__(self, name, value):
         if name == "rules_str":
             self.rules = set([rich.Rich_Rule(rule_str=s) for s in value])
         else:
-            super(Zone, self).__setattr__(name, value)
+            super().__setattr__(name, value)
 
     def export_config_dict(self):
-        conf = super(Zone, self).export_config_dict()
+        conf = super().export_config_dict()
         del conf["UNUSED"]
         return conf
 
@@ -250,7 +250,7 @@ class Zone(IO_Object):
                 )
 
     def check_name(self, name, check_name_len=True):
-        super(Zone, self).check_name(name)
+        super().check_name(name)
         if name.startswith("/"):
             raise FirewallError(
                 errors.INVALID_NAME, "Zone '{}': name can't start with '/'".format(name)

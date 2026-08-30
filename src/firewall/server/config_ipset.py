@@ -50,7 +50,7 @@ class FirewallDConfigIPSet(DbusServiceObject):
 
     @handle_exceptions
     def __init__(self, parent, conf, ipset, item_id, *args, **kwargs):
-        super(FirewallDConfigIPSet, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.parent = parent
         self.config = conf
         self.obj = ipset
@@ -175,7 +175,7 @@ class FirewallDConfigIPSet(DbusServiceObject):
     def Introspect(self, sender=None):  # pylint: disable=W0613
         log.debug2("%s.Introspect()", self._log_prefix)
 
-        data = super(FirewallDConfigIPSet, self).Introspect(
+        data = super().Introspect(
             self.path, self.busname.get_bus()
         )
 

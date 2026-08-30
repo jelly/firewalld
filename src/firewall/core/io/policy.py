@@ -828,7 +828,7 @@ class Policy(IO_Object):
     }
 
     def __init__(self):
-        super(Policy, self).__init__()
+        super().__init__()
         self.version = ""
         self.short = ""
         self.description = ""
@@ -873,13 +873,13 @@ class Policy(IO_Object):
         if name == "rich_rules":
             return [str(r) for r in sorted(self.rules)]
         else:
-            return getattr(super(Policy, self), name)
+            return getattr(super(), name)
 
     def __setattr__(self, name, value):
         if name == "rich_rules":
             self.rules = set([rich.Rich_Rule(rule_str=s) for s in value])
         else:
-            super(Policy, self).__setattr__(name, value)
+            super().__setattr__(name, value)
 
     def _check_config(self, config, item, all_config, all_io_objects):
         common_check_config(self, config, item, all_config, all_io_objects)
@@ -1107,7 +1107,7 @@ class Policy(IO_Object):
                                 )
 
     def check_name(self, name):
-        super(Policy, self).check_name(name)
+        super().check_name(name)
         if name.startswith("/"):
             raise FirewallError(
                 errors.INVALID_NAME,
