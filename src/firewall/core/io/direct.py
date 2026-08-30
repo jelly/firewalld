@@ -366,7 +366,7 @@ class Direct(IO_Object):
             try:
                 shutil.copy2(self.filename, "%s.old" % self.filename)
             except Exception as msg:
-                raise IOError("Backup of '%s' failed: %s" % (self.filename, msg))
+                raise OSError("Backup of '%s' failed: %s" % (self.filename, msg))
 
         if not os.path.exists(config.ETC_FIREWALLD):
             os.mkdir(config.ETC_FIREWALLD, 0o750)

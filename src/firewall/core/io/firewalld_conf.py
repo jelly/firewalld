@@ -402,14 +402,14 @@ class firewalld_conf:
                 shutil.copy2(self.filename, "%s.old" % self.filename)
             except Exception as msg:
                 os.remove(temp_file.name)
-                raise IOError("Backup of '%s' failed: %s" % (self.filename, msg))
+                raise OSError("Backup of '%s' failed: %s" % (self.filename, msg))
 
         # copy tempfile
         try:
             shutil.move(temp_file.name, self.filename)
         except Exception as msg:
             os.remove(temp_file.name)
-            raise IOError("Failed to create '%s': %s" % (self.filename, msg))
+            raise OSError("Failed to create '%s': %s" % (self.filename, msg))
         else:
             os.chmod(self.filename, 0o600)
 

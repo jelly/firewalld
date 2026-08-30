@@ -43,7 +43,7 @@ def getPortID(port):
         except ValueError:
             try:
                 _id = socket.getservbyname(port)
-            except socket.error:
+            except OSError:
                 return -1
     if _id > 65535:
         return -2
@@ -263,7 +263,7 @@ def getServiceName(port, proto):
 
     try:
         name = socket.getservbyport(int(port), proto)
-    except socket.error:
+    except OSError:
         return None
     return name
 
@@ -277,7 +277,7 @@ def checkIP(ip):
 
     try:
         socket.inet_pton(socket.AF_INET, ip)
-    except socket.error:
+    except OSError:
         return False
     return True
 
@@ -300,7 +300,7 @@ def checkIP6(ip):
 
     try:
         socket.inet_pton(socket.AF_INET6, normalizeIP6(ip))
-    except socket.error:
+    except OSError:
         return False
     return True
 
@@ -364,7 +364,7 @@ def checkProtocol(protocol):
         # string
         try:
             socket.getprotobyname(protocol)
-        except socket.error:
+        except OSError:
             return False
     else:
         if i < 0 or i > 255:

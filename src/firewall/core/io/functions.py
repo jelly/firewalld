@@ -50,7 +50,7 @@ def check_on_disk_config(fw):
         _firewalld_conf.read()
     except FirewallError as error:
         raise FirewallError(error.code, "'%s': %s" % (config.FIREWALLD_CONF, error.msg))
-    except IOError:
+    except OSError:
         # defaults will be filled
         pass
     except Exception as msg:
