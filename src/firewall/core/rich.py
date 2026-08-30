@@ -498,10 +498,7 @@ class Rich_Audit:
     limit: Rich_Limit = None
 
     def __lt__(self, other):
-        if lt_objects(self.limit, other.limit):
-            return True
-
-        return False
+        return bool(lt_objects(self.limit, other.limit))
 
     def __str__(self):
         return "audit%s" % (" %s" % self.limit if self.limit else "")
@@ -515,10 +512,7 @@ class Rich_Accept:
     limit: Rich_Limit = None
 
     def __lt__(self, other):
-        if lt_objects(self.limit, other.limit):
-            return True
-
-        return False
+        return bool(lt_objects(self.limit, other.limit))
 
     def __str__(self):
         return "accept%s" % (" %s" % self.limit if self.limit else "")
@@ -555,10 +549,7 @@ class Rich_Drop:
     limit: Rich_Limit = None
 
     def __lt__(self, other):
-        if lt_objects(self.limit, other.limit):
-            return True
-
-        return False
+        return bool(lt_objects(self.limit, other.limit))
 
     def __str__(self):
         return "drop%s" % (" %s" % self.limit if self.limit else "")

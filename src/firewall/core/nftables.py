@@ -2795,9 +2795,7 @@ class nftables:
         return rules
 
     def is_ipv_supported(self, ipv):
-        if ipv in ["ipv4", "ipv6", "eb"]:
-            return True
-        return False
+        return ipv in ["ipv4", "ipv6", "eb"]
 
     def _set_type_list(self, ipv, type):
         ipv_addr = {

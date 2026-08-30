@@ -48,21 +48,12 @@ class FirewallDirect:
         self._obj = obj
 
     def has_runtime_configuration(self):
-        if len(self._chains) + len(self._rules) + len(self._passthroughs) > 0:
-            return True
-        return False
+        return len(self._chains) + len(self._rules) + len(self._passthroughs) > 0
 
     def has_configuration(self):
         if self.has_runtime_configuration():
             return True
-        if (
-            len(self._obj.get_all_chains())
-            + len(self._obj.get_all_rules())
-            + len(self._obj.get_all_passthroughs())
-            > 0
-        ):
-            return True
-        return False
+        return len(self._obj.get_all_chains()) + len(self._obj.get_all_rules()) + len(self._obj.get_all_passthroughs()) > 0
 
     def apply_direct(self, transaction):
         # Apply permanent configuration and save the obj to be able to

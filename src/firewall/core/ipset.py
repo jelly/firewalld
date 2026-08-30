@@ -245,9 +245,7 @@ class ipset:
 
 def check_ipset_name(name):
     """Return true if ipset name is valid"""
-    if len(name) > IPSET_MAXNAMELEN:
-        return False
-    return True
+    return not len(name) > IPSET_MAXNAMELEN
 
 
 def remove_default_create_options(options):

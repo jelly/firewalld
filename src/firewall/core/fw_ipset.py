@@ -55,10 +55,7 @@ class FirewallIPSet:
     def omit_native_ipset(self):
         # if using nftables, we can avoid creating ipsets in the native ipset
         # backend. But only if there aren't any direct rules.
-        if not self._fw.nftables_enabled or self._fw.direct.has_runtime_configuration():
-            return False
-
-        return True
+        return not (not self._fw.nftables_enabled or self._fw.direct.has_runtime_configuration())
 
     def backends(self):
         backends = []

@@ -1028,10 +1028,7 @@ class Firewall:
             transaction.add_rules(ipv6_backend, rules)
 
     def may_skip_flush_direct_backends(self):
-        if self.nftables_enabled and not self.direct.has_runtime_configuration():
-            return True
-
-        return False
+        return bool(self.nftables_enabled and not self.direct.has_runtime_configuration())
 
     def flush_direct_backends(self, use_transaction=None):
         with self.with_transaction(use_transaction) as transaction:

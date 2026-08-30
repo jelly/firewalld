@@ -92,24 +92,16 @@ ICMPV6_TYPES = {
 
 
 def check_icmp_name(_name):
-    if _name in ICMP_TYPES:
-        return True
-    return False
+    return _name in ICMP_TYPES
 
 
 def check_icmp_type_code(_type, _code):
-    if (_type, _code) in ICMP_TYPES.values():
-        return True
-    return False
+    return (_type, _code) in ICMP_TYPES.values()
 
 
 def check_icmpv6_name(_name):
-    if _name in ICMPV6_TYPES:
-        return True
-    return False
+    return _name in ICMPV6_TYPES
 
 
 def check_icmpv6_type_code(_type, _code):
-    if (_type, _code) in ICMPV6_TYPES.values():
-        return True
-    return False
+    return (_type, _code) in ICMPV6_TYPES.values()
